@@ -1,12 +1,14 @@
 package com.example.restarea.dto;
 
-import com.example.restarea.controller.Role;
+import com.example.restarea.constant.Role;
 import com.example.restarea.entity.User;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Size;
 import lombok.*;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 
 
 @Getter
@@ -44,6 +46,16 @@ public class UserDTO {
     private Role role;
 
     public User dtoToEntity(UserDTO userDTO){
+        PasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
 
+        User user = new User();
+        user.setEmail(userDTO.getEmail());
+        user.setId(userDTO.getId());
+        user.setName(userDTO.getName());
+
+        user.setUpw(passwordEncoder.encode(userDTO.getUpw()));
+        user.setRole(role.USER);
+
+        return user;
     }
 }

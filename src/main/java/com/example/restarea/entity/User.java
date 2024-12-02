@@ -1,6 +1,6 @@
 package com.example.restarea.entity;
 
-import com.example.restarea.controller.Role;
+import com.example.restarea.constant.Role;
 import jakarta.persistence.*;
 import lombok.*;
 
