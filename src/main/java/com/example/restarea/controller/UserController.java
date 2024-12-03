@@ -83,6 +83,6 @@ public class UserController {
 
     @GetMapping("/login")
     public String loginMember(){
-        return "/member/loginForm";
+        return "/user/loginForm";
     }
 }

@@ -1,6 +1,8 @@
 package com.example.restarea.dto;
 
+import com.example.restarea.entity.Restarea;
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotBlank;
 import lombok.*;
 
 
@@ -13,17 +15,26 @@ import lombok.*;
 
 public class RestareaDTO {
 
-    @Id
-    @Column(name = "rno_id")
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long rno;
 
-    @Column(length = 50, nullable = false, unique = true)
+    @NotBlank(message = "휴게소의 이름을 작성해주세요")
     private String rname;
 
-    @Column(length = 255, nullable = false)
+    @NotBlank(message = "휴게소의 주소를 작성해주세요")
     private String radd;
 
-    @Column(length = 12, nullable = false)
+    @NotBlank(message = "휴게소의 관리실 번호를 작성해주세요.")
     private Long rcon;
+
+    public Restarea dtoToEntity(RestareaDTO restareaDTO){
+        return null;
+    }
+
+
+
+
 }
+
+
+
+
