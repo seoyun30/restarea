@@ -27,5 +27,5 @@ public class Restarea {
     private String radd;
 
     @Column(length = 12, nullable = false)
-    private int rcon;
+    private String rcon;
 }
