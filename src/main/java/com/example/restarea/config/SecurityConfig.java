@@ -3,6 +3,7 @@ package com.example.restarea.config;
 import jakarta.servlet.annotation.WebListener;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.core.annotation.Order;
 import org.springframework.security.config.annotation.method.configuration.EnableMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
@@ -26,9 +27,10 @@ public class SecurityConfig {
                 .authorizeHttpRequests(
                         authorization -> authorization
                                 .requestMatchers("/restarea/login/**").permitAll()      //로그인페이지는 누구나 접속이 가능한 권한
+                                .requestMatchers("/restarea/loginM/**").permitAll()      //로그인페이지는 누구나 접속이 가능한 권한
                                 .requestMatchers("/restarea/new/**","/restarea/newM").permitAll()      //회원가입페이지
                                 .requestMatchers("/board/register").authenticated() // 로그인 한 사람만 접속 가능
-                                .requestMatchers("/admin/**").hasRole("ADMIN")
+                                .requestMatchers("/sadmin/**").hasRole("MANAGER")
                                 .requestMatchers("/user/list").hasRole("ADMIN")
                                 .requestMatchers("/order/**").authenticated()
                                 .anyRequest().permitAll()       // 그외 다 열어
@@ -37,13 +39,18 @@ public class SecurityConfig {
                 )
                 // 위변조 방지 웹에서 form태그 변경 등의 변조를 방지
                 .csrf( csrf -> csrf.disable())
-                // 로그인
                 .formLogin(
-                        formLogin ->formLogin.loginPage("/restarea/login")      //기본 로그인 페이지 지정
+                        formLogin ->formLogin.loginPage("/restarea/login")     //기본 로그인 페이지 지정
                                 .defaultSuccessUrl("/home/home")                     //로그인이 성공했다면
                                 .usernameParameter("email")                      //로그인 <input name="email">
                         //컨트롤러로 보낼때~~
+
+
                 )
+                // 로그인
+
+
+
                 // 로그아웃
                 .logout(
                         logout -> logout

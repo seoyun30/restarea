@@ -21,4 +21,5 @@ public interface RestareaService {
 
     //삭제
     public void delete(Long rno);
+
 }

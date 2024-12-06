@@ -39,6 +39,12 @@ public class RestareaController {
     @GetMapping("/list")
     public String list(Model model){
 
+
+        //서비스에서 휴게소리스트를 받아올것
+        //모델어트로비트로 담아서 보낼것
+        //밑에 html에 데이터 찍어줄것
+        //휴게소 서비스 만들기
+
         model.addAttribute("restareaDTO", new RestareaDTO());
 
         return "sadmin/list";

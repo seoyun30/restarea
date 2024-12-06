@@ -4,7 +4,7 @@
       layout:decorate="~{layouts/layout2}">
 <head>
     <meta charset="UTF-8">
-    <title>휴게소관리</title>
+    <title>관리자페이지</title>
 </head>
 <body>
 <th:block layout:fragment="content">
@@ -21,17 +21,16 @@
             <!-- Modal -->
             <div class="modal fade" id="modalregister" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                 <div class="modal-dialog modal-dialog-centered">
-                    <form class="row g-3 formA" action="/sadmin/register" method="post" th:object="${restareaDTO}">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h1 class="modal-title fs-5" id="exampleModalLabel">휴게소 등록</h1>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            <div class="row mt-5" >
+                                <div class="col-8 offset-2">
 
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <h1 class="modal-title fs-5" id="exampleModalLabel">휴게소 등록</h1>
-                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                            </div>
-                            <div class="modal-body">
-                                <div class="row mt-5" >
-                                    <div class="col-8 offset-2">
-
+                                    <form class="row g-3 formA" action="/restarea/new" method="post" th:object="${restareaDTO}">
 
                                         <div class="col-12">
                                             <label for="name" class="form-label">매장이름 : </label>
@@ -44,29 +43,22 @@
                                             <label for="radd" class="form-label">radd</label>
                                             <input type="text" th:field="*{radd}" class="form-control" id="radd" placeholder="이메일을 입력해주세요 ex ) test@naver.com" required>
                                             <p th:if="${#fields.hasErrors('radd')}" th:errors="*{radd}" class="fieldError"></p>
-                                        </div>
 
-                                        <div class="col-md-12">
-                                            <label for="rcon" class="form-label">radd</label>
-                                            <input type="text" th:field="*{rcon}" class="form-control" id="rcon" placeholder="이메일을 입력해주세요 ex ) test@naver.com" required>
-                                            <p th:if="${#fields.hasErrors('rcon')}" th:errors="*{rcon}" class="fieldError"></p>
                                         </div>
 
 
-
-
-
-                                    </div>
+                                    </form>
 
                                 </div>
-                            </div>
-                            <div class="modal-footer">
-                                <button type="submit" class="btn btn-primary formbtn">등록하기</button>
-                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                                <button type="button" class="btn btn-primary">Save changes</button>
+
                             </div>
                         </div>
-                    </form>
+                        <div class="modal-footer">
+                            <button type="submit" class="btn btn-primary formbtn">등록하기</button>
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                            <button type="button" class="btn btn-primary">Save changes</button>
+                        </div>
+                    </div>
                 </div>
             </div>
             <div>리스트</div>
